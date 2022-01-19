@@ -74,7 +74,7 @@ def import_dataset_of_records(fn_txt: str = "idmt_traffic_all", only_SE=True) ->
 
 
 def import_record(file_name):
-    current = os.path.dirname(os.path.realpath("IDMT_open.py"))
+    current = os.getcwd()
     parent = os.path.dirname(current)
     file_name = parent.replace("\\", "/") + "/DataPreparation/IDMT_Traffic/IDMT_Traffic/audio/" + file_name
     signal = librosa.load(file_name, mono=False, sr=None)[0]

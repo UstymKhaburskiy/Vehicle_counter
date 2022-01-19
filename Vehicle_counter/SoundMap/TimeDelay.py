@@ -5,8 +5,8 @@ current = os.path.dirname(os.path.realpath("TimeDelay.ipynb"))
 parent = os.path.dirname(current)
 sys.path.append(parent)
 
-from DataPreparation.IDMT_open import import_dataset_of_records, import_record
-from SoundMap.gccestimating import GCC
+from Vehicle_counter.DataPreparation.IDMT_open import import_dataset_of_records, import_record
+from Vehicle_counter.SoundMap.gccestimating import GCC
 
 import numpy as np
 import matplotlib.pyplot as plt

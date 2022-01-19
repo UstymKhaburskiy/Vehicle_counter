@@ -3,20 +3,20 @@ import sys
 import os
 import numpy as np
 
-parent_dir_path = os.path.dirname(os.getcwd())
-sys.path.append(parent_dir_path)
+parent_dir_path = os.getcwd()
+sys.path.append(os.path.dirname(parent_dir_path))
 parent_dir_path = parent_dir_path.replace("\\", "/")
 
-from DataPreparation.IDMT_open import *
-from SoundMap.TimeDelay import *
+from Vehicle_counter.DataPreparation.IDMT_open import *
+from Vehicle_counter.SoundMap.TimeDelay import *
 
 
 class DTW_model:
     def __init__(self, template_right_path=None, template_left_path=None):
         self.parent_dir_path = parent_dir_path
         if template_right_path is None:
-            template_right_path = f"{self.parent_dir_path}/DataPreparation/TemplateAudios/Right_template.wav"
-            template_left_path = f"{self.parent_dir_path}/DataPreparation/TemplateAudios/Left_template.wav"
+            template_right_path = f"{self.parent_dir_path}/Vehicle_counter/DataPreparation/TemplateAudios/Right_template.wav"
+            template_left_path = f"{self.parent_dir_path}/Vehicle_counter/DataPreparation/TemplateAudios/Left_template.wav"
         self.template_right = time_delay_2d(import_template(template_right_path))
         self.template_left = time_delay_2d(import_template(template_left_path))
 
@@ -42,7 +42,7 @@ class DTW_model:
         return vehicle_count, detected_result
 
     def count_vehicles(self, signal_id, threshold_check=5, chunk_size=73, hop_size=36):
-        self.signal_path = f"{self.parent_dir_path}/DataPreparation/LongRecords/{signal_id}"
+        self.signal_path = f"{self.parent_dir_path}/Vehicle_counter/DataPreparation/LongRecords/{signal_id}"
         signal = time_delay_2d(import_template(self.signal_path + ".wav"))
         self.signal = signal
         vehicle_count_left, detected_left = self.count_vehicles_one_side(signal, self.template_left, threshold_check,
