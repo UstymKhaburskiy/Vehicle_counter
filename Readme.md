@@ -1,5 +1,5 @@
 # Acoustic vehicle count system 
-#####(Project for AI course at Ukrainian Catholic University.)
+##### (Project for AI course at Ukrainian Catholic University.)
 
  Acoustic vehicle count system using DTW (dynamic time warping) and MobileNet NN structure on "time delay" sound maps.
  
